@@ -33,7 +33,7 @@ git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -b gh-pages gh-
 cd gh-pages
 
 # If this is the master branch then update the snapshot
-docspath = '../build/asciidoc/html5/.'
+docspath = "../build/asciidoc/html5/."
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
   mkdir -p snapshot
   cp -r $docspath ./snapshot/
