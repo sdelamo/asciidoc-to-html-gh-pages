@@ -3,15 +3,10 @@ set -e
 
 EXIT_STATUS=0
 
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  echo "Exit build because branch is master"
-  exit $EXIT_STATUS
-fi
-
 ./gradlew clean || EXIT_STATUS=$?
 
 if [[ $EXIT_STATUS -ne 0 ]]; then
-    echo "Check failed"
+    echo "Clean failed"
     exit $EXIT_STATUS
 fi
 
