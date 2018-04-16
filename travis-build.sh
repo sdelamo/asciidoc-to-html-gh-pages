@@ -42,7 +42,6 @@ fi
 # If there is a tag present then this becomes the latest
 if [[ -n $TRAVIS_TAG ]]; then
   mkdir -p latest
-  git rm -rf latest
   cp -r ../build/asciidoc/html5/. ./latest/
   git add latest/*
 
@@ -52,12 +51,10 @@ if [[ -n $TRAVIS_TAG ]]; then
   majorVersion="${majorVersion}x" # 3.0.x
 
   mkdir -p "$version"
-  git rm -rf "$version"
   cp -r ../build/asciidoc/html5/. "./$version/"
   git add "$version/*"
 
   mkdir -p "$majorVersion"
-  git rm -rf "$majorVersion"
   cp -r ../build/asciidoc/html5/. "./$majorVersion/"
   git add "$majorVersion/*"
 fi
