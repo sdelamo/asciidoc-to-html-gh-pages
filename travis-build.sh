@@ -40,7 +40,7 @@ cd gh-pages
 # If this is the master branch then update the snapshot
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
   mkdir -p snapshot
-  cp -r ../asciidoc/docs/. ./snapshot/
+  cp -r ../build/asciidoc/html5/. ./snapshot/
   git add snapshot/*
 fi
 
@@ -48,7 +48,7 @@ fi
   if [[ -n $TRAVIS_TAG ]]; then
         git rm -rf latest/
         mkdir -p latest
-        cp -r ../plugin/build/docs/. ./latest/
+        cp -r ../build/asciidoc/html5/. ./latest/
         git add latest/*
 
         version="$TRAVIS_TAG" # eg: v3.0.1
@@ -57,11 +57,11 @@ fi
         majorVersion="${majorVersion}x" # 3.0.x
 
         mkdir -p "$version"
-        cp -r ../plugin/build/docs/. "./$version/"
+        cp -r ../build/asciidoc/html5/. "./$version/"
         git add "$version/*"
 
         git rm -rf "$majorVersion"
-        cp -r ../plugin/build/docs/. "./$majorVersion/"
+        cp -r ../build/asciidoc/html5/. "./$majorVersion/"
         git add "$majorVersion/*"
   fi
 
