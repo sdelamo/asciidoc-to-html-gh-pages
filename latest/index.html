@@ -519,7 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <span id="author" class="author">Doc Writer</span><br>
 <span id="email" class="email"><a href="mailto:doc.writer@example.org">doc.writer@example.org</a></span><br>
 <span id="revnumber">version 1.0.0-SNAPSHOT,</span>
-<span id="revdate">2014-09-09</span>
+<span id="revdate">2018-04-16</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -595,52 +595,57 @@ if [[ $EXIT_STATUS -ne 0 ]]; then
     exit $EXIT_STATUS
 fi
 
-./gradlew docs || EXIT_STATUS=$?
+# Only publish docs if the branch is on master, and it is not a PR
+if [[ -n $TRAVIS_TAG ]] || [[ $TRAVIS_BRANCH == 'master' &amp;&amp; $TRAVIS_PULL_REQUEST == 'false' ]]; then
 
-if [[ $EXIT_STATUS -ne 0 ]]; then
+  ./gradlew docs || EXIT_STATUS=$?
+
+  if [[ $EXIT_STATUS -ne 0 ]]; then
     echo &quot;Docs generation failed&quot;
     exit $EXIT_STATUS
+  fi
+
+  git config --global user.name &quot;$GIT_NAME&quot;
+  git config --global user.email &quot;$GIT_EMAIL&quot;
+  git config --global credential.helper &quot;store --file=~/.git-credentials&quot;
+  echo &quot;https://$GH_TOKEN:@github.com&quot; &gt; ~/.git-credentials
+
+  git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -b gh-pages gh-pages --single-branch &gt; /dev/null
+  cd gh-pages
+
+  # If this is the master branch then update the snapshot
+  if [[ $TRAVIS_BRANCH == 'master' ]]; then
+    mkdir -p snapshot
+    cp -r ../build/asciidoc/html5/. ./snapshot/
+    git add snapshot/*
+  fi
+
+  # If there is a tag present then this becomes the latest
+  if [[ -n $TRAVIS_TAG ]]; then
+    mkdir -p latest
+    cp -r ../build/asciidoc/html5/. ./latest/
+    git add latest/*
+
+    version=&quot;$TRAVIS_TAG&quot; # eg: v3.0.1
+    version=${version:1} # 3.0.1
+    majorVersion=${version:0:4} # 3.0.
+    majorVersion=&quot;${majorVersion}x&quot; # 3.0.x
+
+    mkdir -p &quot;$version&quot;
+    cp -r ../build/asciidoc/html5/. &quot;./$version/&quot;
+    git add &quot;$version/*&quot;
+
+    mkdir -p &quot;$majorVersion&quot;
+    cp -r ../build/asciidoc/html5/. &quot;./$majorVersion/&quot;
+    git add &quot;$majorVersion/*&quot;
+  fi
+
+  git commit -a -m &quot;Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID&quot;
+  git push origin HEAD
+  cd ..
+  rm -rf gh-pages
+
 fi
-
-git config --global user.name &quot;$GIT_NAME&quot;
-git config --global user.email &quot;$GIT_EMAIL&quot;
-git config --global credential.helper &quot;store --file=~/.git-credentials&quot;
-echo &quot;https://$GH_TOKEN:@github.com&quot; &gt; ~/.git-credentials
-
-git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -b gh-pages gh-pages --single-branch &gt; /dev/null
-cd gh-pages
-
-# If this is the master branch then update the snapshot
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
-  mkdir -p snapshot
-  cp -r ../build/asciidoc/html5/. ./snapshot/
-  git add snapshot/*
-fi
-
-# If there is a tag present then this becomes the latest
-if [[ -n $TRAVIS_TAG ]]; then
-  mkdir -p latest
-  cp -r ../build/asciidoc/html5/. ./latest/
-  git add latest/*
-
-  version=&quot;$TRAVIS_TAG&quot; # eg: v3.0.1
-  version=${version:1} # 3.0.1
-  majorVersion=${version:0:4} # 3.0.
-  majorVersion=&quot;${majorVersion}x&quot; # 3.0.x
-
-  mkdir -p &quot;$version&quot;
-  cp -r ../build/asciidoc/html5/. &quot;./$version/&quot;
-  git add &quot;$version/*&quot;
-
-  mkdir -p &quot;$majorVersion&quot;
-  cp -r ../build/asciidoc/html5/. &quot;./$majorVersion/&quot;
-  git add &quot;$majorVersion/*&quot;
-fi
-
-git commit -a -m &quot;Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID&quot;
-git push origin HEAD
-cd ..
-rm -rf gh-pages
 
 exit $EXIT_STATUS</code></pre>
 </div>
@@ -651,7 +656,7 @@ exit $EXIT_STATUS</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0-SNAPSHOT<br>
-Last updated 2018-04-16 08:54:30 UTC
+Last updated 2018-04-16 09:20:10 UTC
 </div>
 </div>
 </body>
