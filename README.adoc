@@ -10,3 +10,8 @@ Convert the AsciiDoc to HTML5 by invoking the 'asciidoctor' goal:
  $ ./gradlew asciidoctor
 
 Open the file _build/asciidoc/html/example-manual.html_  in your browser to see the generated HTML file.
+
+== Docs Sample
+
+https://sdelamo.github.io/asciidoc-to-html-gh-pages/[Github Pages]
+
