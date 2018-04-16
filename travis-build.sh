@@ -33,17 +33,18 @@ git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -b gh-pages gh-
 cd gh-pages
 
 # If this is the master branch then update the snapshot
+docspath = ../build/asciidoc/html5/.
 if [[ $TRAVIS_BRANCH == 'master' ]]; then
   mkdir -p snapshot
-  cp -r ../build/asciidoc/html5/. ./snapshot/
+  cp -r $docspath ./snapshot/
   git add snapshot/*
 fi
 
 # If there is a tag present then this becomes the latest
 if [[ -n $TRAVIS_TAG ]]; then
-  git rm -rf latest/
   mkdir -p latest
-  cp -r ../build/asciidoc/html5/. ./latest/
+  git rm -rf latest/
+  cp -r $docspath ./latest/
   git add latest/*
 
   version="$TRAVIS_TAG" # eg: v3.0.1
@@ -52,11 +53,13 @@ if [[ -n $TRAVIS_TAG ]]; then
   majorVersion="${majorVersion}x" # 3.0.x
 
   mkdir -p "$version"
-  cp -r ../build/asciidoc/html5/. "./$version/"
+  git rm -rf "$version"
+  cp -r $docspath "./$version/"
   git add "$version/*"
 
+  mkdir -p "$majorVersion"
   git rm -rf "$majorVersion"
-  cp -r ../build/asciidoc/html5/. "./$majorVersion/"
+  cp -r $docspath "./$majorVersion/"
   git add "$majorVersion/*"
 fi
 
