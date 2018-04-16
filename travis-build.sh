@@ -40,30 +40,29 @@ if [[ $TRAVIS_BRANCH == 'master' ]]; then
 fi
 
 # If there is a tag present then this becomes the latest
-  if [[ -n $TRAVIS_TAG ]]; then
-        git rm -rf latest/
-        mkdir -p latest
-        cp -r ../build/asciidoc/html5/. ./latest/
-        git add latest/*
+if [[ -n $TRAVIS_TAG ]]; then
+  git rm -rf latest/
+  mkdir -p latest
+  cp -r ../build/asciidoc/html5/. ./latest/
+  git add latest/*
 
-        version="$TRAVIS_TAG" # eg: v3.0.1
-        version=${version:1} # 3.0.1
-        majorVersion=${version:0:4} # 3.0.
-        majorVersion="${majorVersion}x" # 3.0.x
+  version="$TRAVIS_TAG" # eg: v3.0.1
+  version=${version:1} # 3.0.1
+  majorVersion=${version:0:4} # 3.0.
+  majorVersion="${majorVersion}x" # 3.0.x
 
-        mkdir -p "$version"
-        cp -r ../build/asciidoc/html5/. "./$version/"
-        git add "$version/*"
+  mkdir -p "$version"
+  cp -r ../build/asciidoc/html5/. "./$version/"
+  git add "$version/*"
 
-        git rm -rf "$majorVersion"
-        cp -r ../build/asciidoc/html5/. "./$majorVersion/"
-        git add "$majorVersion/*"
-  fi
-
-  git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
-  git push origin HEAD
-  cd ..
-  rm -rf gh-pages
+  git rm -rf "$majorVersion"
+  cp -r ../build/asciidoc/html5/. "./$majorVersion/"
+  git add "$majorVersion/*"
 fi
+
+git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+git push origin HEAD
+cd ..
+rm -rf gh-pages
 
 exit $EXIT_STATUS
