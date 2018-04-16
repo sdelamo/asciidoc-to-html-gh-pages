@@ -1,4 +1,4 @@
-= HTML Example
+= AsciiDoc => HTML => GH Pages
 
 An example project that demonstrates how to convert AsciiDoc to HTML5 using the Asciidoctor Gradle plugin
 and publish the result to Github Pages
