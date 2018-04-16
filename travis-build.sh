@@ -42,7 +42,7 @@ fi
 # If there is a tag present then this becomes the latest
 if [[ -n $TRAVIS_TAG ]]; then
   mkdir -p latest
-  git rm -rf latest/
+  git rm -rf latest
   cp -r ../build/asciidoc/html5/. ./latest/
   git add latest/*
 
