@@ -1,6 +1,6 @@
 = Asciidoc Manual to Github Pages
 Doc Writer <doc.writer@example.org>
-2014-09-09
+2018-04-16
 :revnumber: {project-version}
 :example-caption!:
 ifndef::imagesdir[:imagesdir: images]
