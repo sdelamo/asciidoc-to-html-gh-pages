@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
 <meta name="author" content="Doc Writer">
-<title>Example Manual</title>
+<title>Asciidoc Manual to Github Pages</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -514,7 +514,7 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Example Manual</h1>
+<h1>Asciidoc Manual to Github Pages</h1>
 <div class="details">
 <span id="author" class="author">Doc Writer</span><br>
 <span id="email" class="email"><a href="mailto:doc.writer@example.org">doc.writer@example.org</a></span><br>
@@ -525,11 +525,6 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#source-code">Source Code</a></li>
-<li><a href="#images">Images</a></li>
-<li><a href="#attributes">Attributes</a></li>
-<li><a href="#includes">Includes</a></li>
-<li><a href="#build-gradle">build.gradle</a></li>
 <li><a href="#publish-to-github-pages">Publish to Github Pages</a></li>
 </ul>
 </div>
@@ -546,161 +541,7 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This project does something.
-We just haven&#8217;t decided what that is yet.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="source-code">Source Code</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="title">Java code from project</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> contains(<span class="predefined-type">String</span> haystack, <span class="predefined-type">String</span> needle) {
-    <span class="keyword">return</span> haystack.contains(needle);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This page was built by the following command:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$ ./gradlew asciidoctor</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="images">Images</h2>
-<div class="sectionbody">
-<div class="imageblock thumb">
-<div class="content">
-<img src="images/sunset.jpg" alt="sunset">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="attributes">Attributes</h2>
-<div class="sectionbody">
-<div class="dlist">
-<div class="title">Built-in</div>
-<dl>
-<dt class="hdlist1">asciidoctor-version</dt>
-<dd>
-<p>1.5.5</p>
-</dd>
-<dt class="hdlist1">safe-mode-name</dt>
-<dd>
-<p>unsafe</p>
-</dd>
-<dt class="hdlist1">docdir</dt>
-<dd>
-<p>/home/travis/build/sdelamo/asciidoc-to-html-gh-pages/src/docs/asciidoc</p>
-</dd>
-<dt class="hdlist1">docfile</dt>
-<dd>
-<p>/home/travis/build/sdelamo/asciidoc-to-html-gh-pages/src/docs/asciidoc/index.adoc</p>
-</dd>
-<dt class="hdlist1">imagesdir</dt>
-<dd>
-<p>images</p>
-</dd>
-</dl>
-</div>
-<div class="dlist">
-<div class="title">Custom</div>
-<dl>
-<dt class="hdlist1">project-version</dt>
-<dd>
-<p>1.0.0-SNAPSHOT</p>
-</dd>
-<dt class="hdlist1">sourcedir</dt>
-<dd>
-<p>/home/travis/build/sdelamo/asciidoc-to-html-gh-pages/src/main/java</p>
-</dd>
-<dt class="hdlist1">endpoint-url</dt>
-<dd>
-<p><a href="http://example.org" class="bare">http://example.org</a></p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="includes">Includes</h2>
-<div class="sectionbody">
-<div class="exampleblock">
-<div class="title">include::subdir/_b.adoc[]</div>
-<div class="content">
-<div class="paragraph">
-<p>content from <em>src/docs/asciidoc/subdir/_b.adoc</em>.</p>
-</div>
-<div class="exampleblock">
-<div class="title">include::_c.adoc[]</div>
-<div class="content">
-<div class="paragraph">
-<p>content from <em>src/docs/asciidoc/subdir/c.adoc</em>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Includes can be tricky!
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="build-gradle">build.gradle</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">plugins {
-    id <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span> version <span class="string"><span class="delimiter">'</span><span class="content">1.5.3</span><span class="delimiter">'</span></span>
-}
-
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">java</span><span class="delimiter">'</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span>
-
-version = <span class="string"><span class="delimiter">'</span><span class="content">1.0.0-SNAPSHOT</span><span class="delimiter">'</span></span>
-
-asciidoctorj {
-    version = <span class="string"><span class="delimiter">'</span><span class="content">1.5.5</span><span class="delimiter">'</span></span>
-}
-
-asciidoctor {
-    attributes \
-        <span class="string"><span class="delimiter">'</span><span class="content">build-gradle</span><span class="delimiter">'</span></span>: file(<span class="string"><span class="delimiter">'</span><span class="content">build.gradle</span><span class="delimiter">'</span></span>),
-        <span class="string"><span class="delimiter">'</span><span class="content">sourcedir</span><span class="delimiter">'</span></span>: project.sourceSets.main.java.srcDirs[<span class="integer">0</span>],
-        <span class="string"><span class="delimiter">'</span><span class="content">endpoint-url</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">http://example.org</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">imagesdir</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">images</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">toc</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">icons</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">font</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">setanchors</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">idprefix</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">idseparator</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">-</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">docinfo1</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>
-}
-
-
-task docs {
-    group <span class="string"><span class="delimiter">'</span><span class="content">documentation</span><span class="delimiter">'</span></span>
-    dependsOn asciidoctor
-}</code></pre>
-</div>
+<p>This project generates HTML documentation with <a href="https://asciidoctor.org/docs/what-is-asciidoc/">Asciidoc</a>.</p>
 </div>
 </div>
 </div>
@@ -708,7 +549,101 @@ task docs {
 <h2 id="publish-to-github-pages">Publish to Github Pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See <code>travis-build.sh</code></p>
+<p>The documentation is published to <a href="https://pages.github.com/">Github Pages</a> using <code>travis-build.sh</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">travis.yml</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">sudo: required
+cache:
+  directories:
+  - &quot;$HOME/.gradle&quot;
+dist: trusty
+addons:
+  chrome: stable
+jdk:
+- oraclejdk8
+before_script:
+- rm -rf target
+script: &quot;./travis-build.sh&quot;
+env:
+  global:
+  - secure: VUwR4Jtq+304aDDoLG87gF9K0HGjmjI3pHlELDErGx63W99DHWPADOWRKxmlS6zSX0/QzZw/KYQmOnBcP8COfoY2UNR73BBGUquaM8lqol/1NnMlpmZd0G1Mtw4TS59DCsNg3gG0fS4BMxFBxLe/3Yu7suRnrhB6OusNoOQ2KtYqYj4uwXmCnFdCG83emzOZ5HAyJGgog0cMqvWrCe0qZncQ8SHsZWt21Uc0o0Q+rsf1uKWFPLk48m061r3FObBt2p2RG4NIz3GVDcsoH6IAzl1DL2fAwehdkXcPApz7adda+wESJ4xmCVTXWLkkrzNjdb1i4xwYGmAlgGjCdl6WqK1bcdhPF7Bnv8xsp7xtWQS/cMiu6aYuPmyGgl6W9Egy58QLZXSdVZqlL8952d4Ktt1b36TG/e0ddvrXscZRPDXDlj8SGWzO/loPXoxzvKlbvP3Y43SyzCxdBBVsx0ySeaIDUdaDfl8MIoG1zqstVPHi11/UHZiaOcKVYJ1zLF+wDq3ElqacgcbcPfxUIswnfMLzyVPEAjyOZX4tZih7bd3cIZLZOm1UMTZm+LvJKo7PwrJkAcRVoUgwD24ehVEpFNdIYvnx9JG8t57Z2LRCmvHdHQcFYzYuH2IfGFFKOrLxZfXHh33Yo5YKH4K7Ier/EpxGxtYvAtm7R5BYunE2+EI=
+  - secure: qKpjVbyGGB6yG3jXaero1PvOra1HB2GzWNvKr3cOX+tXtDVZ3WzsxnKBqMYHCCYdzL6Qx7Vjqt3CUcGy33ePikosAZb+BY+JIUrV8dUCUjqpL0HtH7OAbeOpPpEOwAiThN+feJ7u+8MhlVxBaeZ/0MqwGf6k9mEW+WfGfY95TuNcp67hZhSujIft+x9bhcf/a8W6qtXK9ojSfdvX3/y2n1WAb5rpxdVqS/BcQKcd9kvrYx0/ebkPmxTv/os7yRYjum0tGuPUvS5PYPHvIdD2RvoLUUy/72qg/4oLoM9BcnQH0VR7EcOaHN1YhtWuaCab4xZSYTRSm1HY4Cdg12901azI2is0BY4jQt19lihsyB86p6rfpzWPm0RDMUMX3Xp+6fx8bh85FGsX0InAOB/OcyFoGGU2c5k96wmO4qnr2DP/d82r1mElR6degQIiWt+LUMwDpz0W7ZWGDhpHQA+mrE14XBsRvg7zhenyc7c6otPNQpa1xgLDhpH+yHvMu1yor/Q74tWVto2u9nFIpWJYatFMSPHLsMJSukya1UrTS++ozTaU8qOEgw7kJFzaI5ESWanl0+ajbfkQ5zoDV0dT4GiOdWeqqUtbFP4FaKFxXF/KZefw7/czyCFXIelMILMb8h+eKFpSaa3jQOhnAAA2mQF+nj+NIGXLtqgNE9IAVzk=
+  - secure: jwt/X6uc7VdR4pw91ORVWHrO5vIPUNnHISWC0I5xTc3MXE1/unNMwN9LOqve61bOghS+ms+ROUFJRLRFeMtbz2JaD/cZBsPb4vHMgmgfnXs0KskDqYVHMUclp8UzTkThopfZVnY8WKZATG/e8fy1N7qNtadf6bN+dywDG1pwuyegv6VAIv6F6GHxMppfPKFp0kEqyOWgniONa1MpDdDV5Z9cs4npHrhMM2fVZuXYrPL8YellgfQivzlgzZDE6lKIqToVZprGjcqN8HdC0qXgI76WVCAMesOPoXZLFV0SBXiwQaBEFJca48dexL9W9sFBREfvHMOC59Vln+Z/QB1PhUKbx58geve87G221V6SUs5jxNtiWn8kWvuIgPhJ0Cj3ncS6EEat40l0jMxwSIgFteflQ+ihBhGx1jo0Ck3aS9KqgwzOLDGpLt5dkNbWJIcOeJV6BX8r1lnek3yEoNbZzpTp5JMlHErLq8XdzcJr1gADn6YOXHcN0vle8XnXbXm9WQ+YUrirML00kzFTfdjRetYNqFHbNqCAYUkvVuf3kVAEQF8f0GVnEIXmZS3GGReae7lN0w5VDjmxfpuFwRMY2w4bHGvmqxfexu+dvNLbvxz3h6TRRDWyHLs8alqkjTB9InHq1Ks9cwo95/dC5vwI4F5tKQhieR6ZaJGEicCdd9k=</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">travis-build.sh</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">#!/bin/bash
+set -e
+
+EXIT_STATUS=0
+
+./gradlew clean || EXIT_STATUS=$?
+
+if [[ $EXIT_STATUS -ne 0 ]]; then
+    echo &quot;Clean failed&quot;
+    exit $EXIT_STATUS
+fi
+
+./gradlew check || EXIT_STATUS=$?
+
+if [[ $EXIT_STATUS -ne 0 ]]; then
+    echo &quot;Check failed&quot;
+    exit $EXIT_STATUS
+fi
+
+./gradlew docs || EXIT_STATUS=$?
+
+if [[ $EXIT_STATUS -ne 0 ]]; then
+    echo &quot;Docs generation failed&quot;
+    exit $EXIT_STATUS
+fi
+
+git config --global user.name &quot;$GIT_NAME&quot;
+git config --global user.email &quot;$GIT_EMAIL&quot;
+git config --global credential.helper &quot;store --file=~/.git-credentials&quot;
+echo &quot;https://$GH_TOKEN:@github.com&quot; &gt; ~/.git-credentials
+
+git clone https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git -b gh-pages gh-pages --single-branch &gt; /dev/null
+cd gh-pages
+
+# If this is the master branch then update the snapshot
+if [[ $TRAVIS_BRANCH == 'master' ]]; then
+  mkdir -p snapshot
+  cp -r ../build/asciidoc/html5/. ./snapshot/
+  git add snapshot/*
+fi
+
+# If there is a tag present then this becomes the latest
+if [[ -n $TRAVIS_TAG ]]; then
+  mkdir -p latest
+  cp -r ../build/asciidoc/html5/. ./latest/
+  git add latest/*
+
+  version=&quot;$TRAVIS_TAG&quot; # eg: v3.0.1
+  version=${version:1} # 3.0.1
+  majorVersion=${version:0:4} # 3.0.
+  majorVersion=&quot;${majorVersion}x&quot; # 3.0.x
+
+  mkdir -p &quot;$version&quot;
+  cp -r ../build/asciidoc/html5/. &quot;./$version/&quot;
+  git add &quot;$version/*&quot;
+
+  mkdir -p &quot;$majorVersion&quot;
+  cp -r ../build/asciidoc/html5/. &quot;./$majorVersion/&quot;
+  git add &quot;$majorVersion/*&quot;
+fi
+
+git commit -a -m &quot;Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID&quot;
+git push origin HEAD
+cd ..
+rm -rf gh-pages
+
+exit $EXIT_STATUS</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -716,7 +651,7 @@ task docs {
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0-SNAPSHOT<br>
-Last updated 2018-04-16 08:44:08 UTC
+Last updated 2018-04-16 08:54:30 UTC
 </div>
 </div>
 </body>
